@@ -36,8 +36,12 @@
                 Save & Load
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Save Data</a>
-                <a class="dropdown-item" href="#">Load Data</a>
+                <a class="dropdown-item" href="#" @click="saveData"
+                  >Save Data</a
+                >
+                <a class="dropdown-item" href="#" @click="loadData"
+                  >Load Data</a
+                >
               </div>
             </li>
             <li class="m-auto text-white">
@@ -52,6 +56,7 @@
 
 <script>
 import { mapActions } from 'vuex'
+import tradeData from '../services/data'
 export default {
   computed: {
     funds() {
@@ -59,9 +64,23 @@ export default {
     }
   },
   methods: {
-    ...mapActions('stocks', ['randomizeStocks']),
+    ...mapActions({
+      randomizeStocks: 'stocks/randomizeStocks',
+      fetchData: 'loadData'
+    }),
     endDay() {
       this.randomizeStocks()
+    },
+    async saveData() {
+      const data = {
+        funds: this.$store.getters['portfolio/funds'],
+        stockPortfolio: this.$store.getters['portfolio/stockPortfolio'],
+        stocks: this.$store.getters['stocks/stocks']
+      }
+      await tradeData.saveTradeData(data)
+    },
+    async loadData() {
+      this.fetchData()
     }
   }
 }

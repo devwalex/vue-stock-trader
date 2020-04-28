@@ -1,0 +1,35 @@
+{
+  "data": {
+    "funds": 7478,
+    "stockPortfolio": [
+      {
+        "id": 1,
+        "quantity": 3,
+        "name": "BMW",
+        "price": 114
+      }
+    ],
+    "stocks": [
+      {
+        "id": 1,
+        "name": "BMW",
+        "price": 114
+      },
+      {
+        "id": 2,
+        "name": "Apple",
+        "price": 58
+      },
+      {
+        "id": 3,
+        "name": "Twitter",
+        "price": 33
+      },
+      {
+        "id": 4,
+        "name": "Lexus",
+        "price": 297
+      }
+    ]
+  }
+}
