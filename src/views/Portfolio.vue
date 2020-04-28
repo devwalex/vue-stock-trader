@@ -1,11 +1,13 @@
 <template>
-  <div>
-    <h1>Portolio</h1>
-    <app-stock
-      v-for="stock in stockPortfolio"
-      :stock="stock"
-      :key="stock.id"
-    ></app-stock>
+  <div class="mt-5">
+    <h1 class="mb-4">Portolio</h1>
+    <div class="row">
+      <app-stock
+        v-for="stock in stockPortfolio"
+        :stock="stock"
+        :key="stock.id"
+      ></app-stock>
+    </div>
   </div>
 </template>
 

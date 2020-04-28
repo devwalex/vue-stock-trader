@@ -56,7 +56,6 @@ export default {
         stockPrice: this.stock.price,
         quantity: parseInt(this.quantity)
       }
-      console.log('BUY STOCK', typeof this.quantity, this.quantity, order)
       this.$store.dispatch('stocks/buyStock', order)
       this.quantity = 0
     }

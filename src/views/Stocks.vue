@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>Stocks</h1>
+  <div class="mt-5">
+    <h1 class="mb-4">Stocks</h1>
 
     <div class="row">
       <app-stock
