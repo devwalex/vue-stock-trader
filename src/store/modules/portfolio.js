@@ -33,9 +33,13 @@ export default {
     }
   },
   getters: {
-    stockPortfolio: (state, getters) => {
-      return state.stock.map(stock => {
-        const record = getters.stocks.find(element => element.id == stock.id)
+    stockPortfolio: (state, rootGetters, getters) => {
+      return state.stocks.map(stock => {
+        console.log('GETTERS', getters['stocks'].stocks)
+
+        const record = getters['stocks'].stocks.find(
+          element => element.id == stock.id
+        )
         console.log('RECORD', record)
 
         return {
