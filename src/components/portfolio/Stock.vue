@@ -2,7 +2,10 @@
   <div class="col-sm-6 col-md-4">
     <div class="card mb-3">
       <div class="card-header text-white bg-primary">
-        {{ stock.name }} <small>(Price: {{ stock.price }})</small>
+        {{ stock.name }}
+        <small
+          >(Price: {{ stock.price }} | Quality: {{ stock.quantity }})</small
+        >
       </div>
       <div class="card-body">
         <form class="form-inline">
@@ -13,11 +16,11 @@
             placeholder="Quality"
           />
           <button
-            @click.prevent="buyStock"
+            @click.prevent="sellStock"
             class="btn btn-primary ml-3"
-            :disabled="quantity <= 0 || !Number.isInteger(parseInt(quantity))"
+            :disabled="quantity <= 0 || !Number.isInteger(Number(quantity))"
           >
-            Buy
+            Sell
           </button>
         </form>
       </div>
@@ -34,8 +37,15 @@ export default {
     }
   },
   methods: {
-    buyStock() {
-      console.log('BUY STOCK', typeof this.quantity)
+    sellStock() {
+      const order = {
+        stockId: this.stock.id,
+        stockPrice: this.stock.price,
+        quantity: this.quantity
+      }
+      console.log('SELL STOCK', typeof this.quantity, this.quantity, order)
+      this.$store.dispatch('portfolio/sellStock', order)
+      this.quantity = 0
     }
   }
 }

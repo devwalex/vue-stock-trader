@@ -13,8 +13,8 @@ export default {
     }
   },
   actions: {
-    buyStock({ commit }) {
-      commit()
+    buyStock({ commit }, order) {
+      commit('portfolio/BUY_STOCK', order, { root: true })
     },
     initStocks({ commit }) {
       commit('SET_STOCK', stocks)
