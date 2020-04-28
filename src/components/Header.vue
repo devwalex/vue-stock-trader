@@ -40,6 +40,9 @@
                 <a class="dropdown-item" href="#">Load Data</a>
               </div>
             </li>
+            <li class="m-auto text-white">
+              <strong>Funds: {{ funds }}</strong>
+            </li>
           </ul>
         </div>
       </div>
@@ -48,7 +51,13 @@
 </template>
 
 <script>
-export default {}
+export default {
+  computed: {
+    funds() {
+      return this.$store.getters['portfolio/funds']
+    }
+  }
+}
 </script>
 
 <style scoped></style>
