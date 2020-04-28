@@ -1,7 +1,7 @@
 <template>
   <div class="col-sm-6 col-md-4">
     <div class="card mb-3">
-      <div class="card-header text-white bg-primary">
+      <div class="card-header text-white bg-success">
         {{ stock.name }}
         <small
           >(Price: {{ stock.price }} | Quality: {{ stock.quantity }})</small
@@ -17,11 +17,12 @@
           />
           <button
             @click.prevent="sellStock"
-            class="btn btn-primary ml-3"
+            class="btn btn-success ml-3"
             :disabled="quantity <= 0 || !Number.isInteger(Number(quantity))"
           >
             Sell
           </button>
+          <!-- {{ console.log(typeof quantity) }} -->
         </form>
       </div>
     </div>
@@ -41,7 +42,7 @@ export default {
       const order = {
         stockId: this.stock.id,
         stockPrice: this.stock.price,
-        quantity: this.quantity
+        quantity: parseInt(this.quantity)
       }
       console.log('SELL STOCK', typeof this.quantity, this.quantity, order)
       this.$store.dispatch('portfolio/sellStock', order)
