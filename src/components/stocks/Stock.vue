@@ -11,14 +11,22 @@
             type="number"
             v-model="quantity"
             placeholder="Quality"
+            :class="{ danger: insufficientFunds }"
           />
           <button
             @click.prevent="buyStock"
             class="btn btn-primary ml-3"
-            :disabled="quantity <= 0 || !Number.isInteger(Number(quantity))"
+            :disabled="
+              insufficientFunds ||
+                quantity <= 0 ||
+                !Number.isInteger(Number(quantity))
+            "
           >
             Buy
           </button>
+          <small class="mt-2 text-red">{{
+            insufficientFunds ? 'Insufficient Funds' : ''
+          }}</small>
         </form>
       </div>
     </div>
@@ -31,6 +39,14 @@ export default {
   data() {
     return {
       quantity: 0
+    }
+  },
+  computed: {
+    funds() {
+      return this.$store.getters['portfolio/funds']
+    },
+    insufficientFunds() {
+      return this.quantity * this.stock.price > this.funds
     }
   },
   methods: {
@@ -48,4 +64,11 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.danger {
+  border: 1px solid red !important;
+}
+.text-red {
+  color: red;
+}
+</style>

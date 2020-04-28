@@ -14,15 +14,22 @@
             type="number"
             v-model="quantity"
             placeholder="Quality"
+            :class="{ danger: insufficientQuantity }"
           />
           <button
             @click.prevent="sellStock"
             class="btn btn-success ml-3"
-            :disabled="quantity <= 0 || !Number.isInteger(Number(quantity))"
+            :disabled="
+              insufficientQuantity ||
+                quantity <= 0 ||
+                !Number.isInteger(Number(quantity))
+            "
           >
             Sell
           </button>
-          <!-- {{ console.log(typeof quantity) }} -->
+          <small class="mt-2 text-red">{{
+            insufficientQuantity ? 'Insufficient Quantity' : ''
+          }}</small>
         </form>
       </div>
     </div>
@@ -35,6 +42,11 @@ export default {
   data() {
     return {
       quantity: 0
+    }
+  },
+  computed: {
+    insufficientQuantity() {
+      return this.quantity > this.stock.quantity
     }
   },
   methods: {
@@ -52,4 +64,11 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.danger {
+  border: 1px solid red !important;
+}
+.text-red {
+  color: red;
+}
+</style>
