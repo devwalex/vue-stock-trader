@@ -8,8 +8,10 @@ export default {
     SET_STOCK(state, stocks) {
       state.stocks = stocks
     },
-    RANDOM_STOCK(state, stocks) {
-      state.stocks = stocks
+    RANDOM_STOCK(state) {
+      state.stocks.forEach(stock => {
+        stock.price = Math.round(stock.price * (1 + Math.random() - 0.5))
+      })
     }
   },
   actions: {
