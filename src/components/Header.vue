@@ -41,7 +41,7 @@
               </div>
             </li>
             <li class="m-auto text-white">
-              <strong>Funds: {{ funds }}</strong>
+              <strong>Funds: {{ funds | currency }}</strong>
             </li>
           </ul>
         </div>
