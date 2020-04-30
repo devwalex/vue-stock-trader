@@ -16,6 +16,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
+            <router-link :to="{ name: 'Stocks' }" class="nav-item" active-class="active" tag="li">
+              <a class="nav-link">Stocks</a>
+            </router-link>
             <router-link
               :to="{ name: 'Portfolio' }"
               class="nav-item"
@@ -23,9 +26,6 @@
               tag="li"
             >
               <a class="nav-link">Portfolio</a>
-            </router-link>
-            <router-link :to="{ name: 'Stocks' }" class="nav-item" active-class="active" tag="li">
-              <a class="nav-link">Stocks</a>
             </router-link>
           </ul>
           <ul class="navbar-nav navbar-right">
