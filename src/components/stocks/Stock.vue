@@ -2,7 +2,8 @@
   <div class="col-sm-6 col-md-4">
     <div class="card mb-3">
       <div class="card-header text-white bg-primary">
-        {{ stock.name }} <small>(Price: {{ stock.price }})</small>
+        {{ stock.name }}
+        <small>(Price: {{ stock.price }})</small>
       </div>
       <div class="card-body">
         <form class="form-inline">
@@ -15,18 +16,18 @@
           />
           <button
             @click.prevent="buyStock"
-            class="btn btn-primary ml-3"
+            class="btn btn-primary m-3"
             :disabled="
               insufficientFunds ||
                 quantity <= 0 ||
                 !Number.isInteger(Number(quantity))
             "
-          >
-            Buy
-          </button>
-          <small class="mt-2 text-red">{{
+          >Buy</button>
+          <small class="mt-2 text-red">
+            {{
             insufficientFunds ? 'Insufficient Funds' : ''
-          }}</small>
+            }}
+          </small>
         </form>
       </div>
     </div>
