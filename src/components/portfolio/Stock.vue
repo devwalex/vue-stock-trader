@@ -3,7 +3,9 @@
     <div class="card mb-3">
       <div class="card-header text-white bg-success">
         {{ stock.name }}
-        <small>(Price: {{ stock.price }} | Quality: {{ stock.quantity }})</small>
+        <small
+          >(Price: {{ stock.price }} | Quality: {{ stock.quantity }})</small
+        >
       </div>
       <div class="card-body">
         <form class="form-inline">
@@ -22,11 +24,11 @@
                 quantity <= 0 ||
                 !Number.isInteger(Number(quantity))
             "
-          >Sell</button>
+          >
+            Sell
+          </button>
           <small class="mt-2 text-red">
-            {{
-            insufficientQuantity ? 'Insufficient Quantity' : ''
-            }}
+            {{ insufficientQuantity ? 'Insufficient Quantity' : '' }}
           </small>
         </form>
       </div>

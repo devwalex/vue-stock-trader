@@ -6,9 +6,7 @@ export const apiClient = axios.create({
   withCredentials: false,
   headers: {
     Accept: 'application/json',
-    'Content-Type': 'application/json',
-    // 'Access-Control-Allow-Origin': `https://vue-stock-trader-ced52.firebaseio.com/data`,
-    // 'Access-Control-Allow-Credentials': true
+    'Content-Type': 'application/json'
   }
 })
 

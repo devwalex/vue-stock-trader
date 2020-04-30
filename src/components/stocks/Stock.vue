@@ -22,11 +22,11 @@
                 quantity <= 0 ||
                 !Number.isInteger(Number(quantity))
             "
-          >Buy</button>
+          >
+            Buy
+          </button>
           <small class="mt-2 text-red">
-            {{
-            insufficientFunds ? 'Insufficient Funds' : ''
-            }}
+            {{ insufficientFunds ? 'Insufficient Funds' : '' }}
           </small>
         </form>
       </div>
